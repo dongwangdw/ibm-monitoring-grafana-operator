@@ -1,4 +1,4 @@
-#!/bin/bash
+bin/bash
 #
 # Copyright 2020 IBM Corporation
 #
@@ -16,7 +16,7 @@
 #
 
 set -e
-QUAY_NAMESPACE=${QUAY_NAMESPACE:-opencloudio}
+QUAY_NAMESPACE=${QUAY_NAMESPACE:-dongtest}
 QUAY_REPOSITORY=${QUAY_REPOSITORY:-ibm-monitoring-grafana-operator-app}
 
 [[ "X$QUAY_USERNAME" == "X" ]] && read -rp "Enter username quay.io: " QUAY_USERNAME
