@@ -16,7 +16,7 @@
 #
 
 set -e
-QUAY_NAMESPACE=${QUAY_NAMESPACE:-opencloudio}
+QUAY_NAMESPACE=${QUAY_NAMESPACE:-dongtest}
 QUAY_REPOSITORY=${QUAY_REPOSITORY:-ibm-monitoring-grafana-operator-app}
 BUNDLE_DIR=${BUNDLE_DIR:-deploy/olm-catalog/ibm-monitoring-grafana-operator}
 
@@ -59,14 +59,6 @@ function push_csv() {
   }'
 }
 
-function protect_csv() {
-  python3 common/scripts/csv-protect.py
-  res=$?
-  if [ $res != 0 ];then
-     exit 1
-  fi
-}
-
 # Delete application release in repository
 function delete_csv() {
   echo "Delete release ${RELEASE} of package ${QUAY_REPOSITORY} from namespace ${QUAY_NAMESPACE}"
@@ -76,6 +68,3 @@ function delete_csv() {
 }
 
 #-------------------------------------- Main --------------------------------------#
-protect_csv
-delete_csv
-push_csv
